@@ -1,7 +1,7 @@
-import Button from "@/Componants/Button";
+import Button from "../Componants/Button";
 import { useNavigate } from "react-router-dom";
-import ow from "@/assets/ow.png";
-import { useAuth } from "@/context/AuthProvider";
+import ow from "../assets/OW.png";
+import { useAuth } from "../context/AuthProvider";
 import { toast } from "react-toastify";
 import { createConversation } from "../services/api";
 import { useState } from "react";
