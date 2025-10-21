@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import Loader from './Componants/Loader'
+import { useAuth } from './context/AuthProvider'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
+import ChangePassword from './pages/ChangePassword'
+import RequireAuth from './context/RequireAuth'
+import Conversation from './pages/Conversation'
+import PaymentSuccess from './pages/PaymentSuccess'
+import PaymentCancelled from './pages/PaymentCancelled'
+import UserDock from './Componants/UserDock'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const { loading } = useAuth()
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#f7f7f7]">
+        <Loader size={4} />
+      </div>
+    )
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/change-password" element={<RequireAuth><ChangePassword /></RequireAuth>} />
+      <Route path="/conversation/:id" element={<RequireAuth><Conversation /></RequireAuth>} />
+      <Route path="/payment-success" element={<RequireAuth><PaymentSuccess /></RequireAuth>} />
+      <Route path="/payment-cancelled" element={<RequireAuth><PaymentCancelled /></RequireAuth>} />
+    </Routes>
   )
 }
 
