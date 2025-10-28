@@ -1,11 +1,12 @@
 import { useAuth } from './AuthProvider'
+import { Navigate } from 'react-router-dom'
 
 export default function RequireAuth({ children }) {
-  const { loading } = useAuth()
+  const { user, loading } = useAuth()
 
-  if (loading) return null // still wait while loading
+  if (loading) return null // App already shows loader during initial check
 
-  // ✅ Always allow access — no redirect
+  if (!user) return <Navigate to="/sign-in" replace />
+
   return children
 }
-
