@@ -13,16 +13,16 @@ export default function Home() {
     const navigate = useNavigate();
     const createConvo = async (e) => {
         e.preventDefault();
-        if (!user) {
-            navigate('/sign-in');
-            toast.error('You must be signed in to create a conversation');
-            return};
+        //if (!user) {
+            //navigate('/sign-in');
+            //toast.error('You must be signed in to create a conversation');
+            //return};
         try{
             const res = await createConversation({ character: "oscar-wilde",prompt });
-            if(res.status === 401) {
-                console.log(res)
-                navigate('/sign-in');
-                return toast.error('You must be signed in to create a conversation');
+            //if(res.status === 401) {
+                //console.log(res)
+                //navigate('/sign-in');
+                //return toast.error('You must be signed in to create a conversation');
             }
             const conversationId = res?.data?.conversationId;
             navigate(`/conversation/${conversationId}`);
