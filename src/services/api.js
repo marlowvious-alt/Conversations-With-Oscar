@@ -2,7 +2,9 @@ import axios from 'axios'
 
 const api = axios.create({
   baseURL: import.meta.env.VITE_REACT_APP_API_URL || '',
-  withCredentials: true,
+withCredentials: false,
+
+
 })
 
 export const signUp = (data) => api.post('/auth/create-user', data)
