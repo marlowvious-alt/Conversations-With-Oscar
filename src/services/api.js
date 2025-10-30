@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_REACT_APP_API_URL || '',
+baseURL: 'https://conversations-with-oscar-backend.vercel.app',
+
 withCredentials: false,
 
 
