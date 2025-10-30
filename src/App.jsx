@@ -31,10 +31,11 @@ function App() {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route path="/change-password" element={<RequireAuth><ChangePassword /></RequireAuth>} />
-      <Route path="/conversation/:id" element={<RequireAuth><Conversation /></RequireAuth>} />
-      <Route path="/payment-success" element={<RequireAuth><PaymentSuccess /></RequireAuth>} />
-      <Route path="/payment-cancelled" element={<RequireAuth><PaymentCancelled /></RequireAuth>} />
+    <Route path="/change-password" element={<ChangePassword />} />
+<Route path="/conversation/:id" element={<Conversation />} />
+<Route path="/payment-success" element={<PaymentSuccess />} />
+<Route path="/payment-cancelled" element={<PaymentCancelled />} />
+
     </Routes>
   )
 }
